@@ -1,6 +1,6 @@
 <template>
 	<AppLayout>
-		<div class="space-y-4 sm:max-w-[30vw] mx-auto">
+		<div class="space-y-4 w-fit mx-auto">
 			<div class="px-3 pb-4">
 				<h1 class="text-3xl">Welcome back</h1>
 				<p class="text-base">Login to continue</p>
