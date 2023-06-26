@@ -2,9 +2,7 @@
 export default defineNuxtConfig({
 	devtools: { enabled: true },
 	modules: ["@nuxtjs/tailwindcss", "nuxt-icon", "@pinia/nuxt"],
-	app: {
-		baseURL: "/impin/",
-	},
+
 	components: [
 		{
 			path: "~/components",
