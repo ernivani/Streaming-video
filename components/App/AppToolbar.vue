@@ -9,13 +9,13 @@
 				@click="emit('onClickMenuItem', 'navIcon')"
 			/>
 			<IconButton v-else icon="ic:round-arrow-back" @click="goBack" />
-			<h1 class="text-lg">{{ props.title }}</h1>
+			<h1 class="text-lg sm:hidden flex flex-grow">{{ props.title }}</h1>
 
 			<input
 				type="text"
 				placeholder="Type to search"
 				onselectstart="return true"
-				class="relative min-h-[48px] flex flex-grow bg-transparent select-text outline-none"
+				class="relative min-h-[48px] hidden sm:flex flex-grow bg-transparent select-text outline-none"
 			/>
 			<IconButton icon="ic:outline-notifications" />
 			<Avatar src="https://avatars.githubusercontent.com/u/67279072?v=4" />

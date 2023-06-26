@@ -3,6 +3,11 @@
 		<ItemCard v-for="n in 10" />
 	</AppLayout>
 </template>
+<script setup lang="ts">
+	definePageMeta({
+		title: "Home",
+	});
+</script>
 <style scoped>
 	.grid-responsive {
 		grid-area: span;

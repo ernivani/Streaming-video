@@ -37,11 +37,7 @@
 	});
 
 	useHead({
-		title: route.meta.name,
-	});
-
-	useSeoMeta({
-		ogTitle: "Impin",
+		meta: [{ property: "og:title", content: `Impin - ${route.meta.title}` }],
 	});
 </script>
 <style>
