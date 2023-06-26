@@ -1,6 +1,12 @@
 @tailwind base;
 @tailwind components;
-
+* {
+	margin: 0; /* zero out margin */
+	padding: 0; /* zero out padding */
+}
+main {
+	padding: 20px;
+}
 @media (prefers-color-scheme: light) {
 	html,
 	body {
@@ -16,13 +22,12 @@
 	::-webkit-scrollbar-track {
 		-webkit-box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.3);
 		border-radius: 8px;
-		@apply bg-colorBackgroundLight;
+		@apply bg-colorPrimaryContainerLight;
 	}
 
 	::-webkit-scrollbar {
 		width: 8px;
-		height: 100px;
-		@apply bg-colorBackgroundLight;
+		@apply bg-colorPrimaryContainerLight;
 	}
 
 	::-webkit-scrollbar-thumb {
@@ -36,7 +41,6 @@
 	html,
 	body {
 		@apply bg-colorBackgroundDark text-colorOnBackgroundDark;
-		margin: 0;
 		position: absolute;
 		height: 100%;
 		width: 100vw;
