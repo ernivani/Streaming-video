@@ -9,9 +9,14 @@
 				@click="emit('onClickMenuItem', 'navIcon')"
 			/>
 			<IconButton v-else icon="ic:round-arrow-back" @click="goBack" />
-			<h1 class="text-lg sm:hidden flex flex-grow">{{ props.title }}</h1>
+			<h1
+				v-if="isTabletMode && props.title != 'Home'"
+				class="text-lg flex flex-grow"
+				>{{ props.title }}</h1
+			>
 
 			<input
+				v-if="$route.name == 'index'"
 				type="text"
 				placeholder="Type to search"
 				onselectstart="return true"

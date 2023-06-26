@@ -26,29 +26,23 @@
 				icon="logos:google-icon"
 				text="Sign in with Google"
 			/>
+			<div class="flex text-sm space-x-1"
+				><p>Don't have an account? </p>
+				<button
+					v-Ripple
+					class="cursor-pointer rounded-md text-colorPrimaryLight dark:text-colorPrimaryDark"
+					>Signup</button
+				></div
+			>
 		</div>
 	</AppLayout>
 </template>
 <script setup lang="ts">
-	const client = useSupabaseAuthClient();
-	const router = useRouter();
-	const user = useSupabaseUser();
 	const credentials = reactive({
 		email: "",
 		password: "",
 	});
-	async function login() {
-		const { email, password } = credentials;
-		const { error } = await client.auth.signInWithPassword({ email, password });
-		if (!error) return router.push("/");
-		console.log(error);
-	}
 
-	watchEffect(async () => {
-		if (user.value) {
-			await router.push("/");
-		}
-	});
 	const isTabletMode = computed(() => {
 		return window.innerWidth > 600;
 	});
