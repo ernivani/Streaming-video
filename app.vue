@@ -7,7 +7,7 @@
 			@update:isShown="(state) => (isDrawerVisible = state)"
 		>
 		</AppDrawer>
-		<AppContainer style="padding-top: 60px" class="">
+		<AppContainer style="padding-top: 60px" class="flex flex-row flex-grow">
 			<AppToolbar
 				:title="$route.meta.title"
 				@onClickMenuItem="(name) => (isDrawerVisible = true)"
@@ -37,11 +37,7 @@
 	});
 
 	useHead({
-		title: route.meta.name,
-	});
-
-	useSeoMeta({
-		ogTitle: "Impin",
+		meta: [{ property: "og:title", content: `Impin - ${route.meta.title}` }],
 	});
 </script>
 <style>
