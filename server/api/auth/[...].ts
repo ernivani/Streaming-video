@@ -1,4 +1,5 @@
 import CredentialsProvider from "next-auth/providers/credentials";
+import GoogleProvider from "next-auth/providers/google";
 import { NuxtAuthHandler } from "#auth";
 import { compare } from "bcrypt";
 
@@ -11,6 +12,11 @@ export default NuxtAuthHandler({
         signIn: "/auth/login",
     },
     providers: [
+        // @ts-ignore Import is exported on .default during SSR, so we need to call it this way. May be fixed via Vite at some point
+        GoogleProvider.default({
+            clientId: process.env.GOOGLE_CLIENT_ID || "",
+            clientSecret: process.env.GOOGLE_CLIENT_SECRET || "",
+        }),
         // @ts-ignore Import is exported on .default during SSR, so we need to call it this way. May be fixed via Vite at some point
         CredentialsProvider.default({
             name: "Credentials",
