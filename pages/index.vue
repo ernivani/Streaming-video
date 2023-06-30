@@ -1,7 +1,7 @@
 <template>
     <AppLayout class="mx-auto grid gap-4 grid-responsive">
-        <!-- <ItemCard v-for="n in 10" /> -->
-        <LoginForm />
+        <ItemCard v-for="n in 10" />
+        <!-- <LoginForm />
         <RegisterForm />
         <div>
             <pre v-if="data"><span>Data:</span> {{ data }}</pre>
@@ -15,15 +15,13 @@
             >
                 <span>Logout</span>
             </button>
-        </div>
+        </div> -->
     </AppLayout>
 </template>
 <script setup lang="ts">
-const { data, status, getCsrfToken, getProviders, signOut } = useAuth();
-const providers = await getProviders();
-const csrfToken = await getCsrfToken();
-
-//TODO: to register just $axios to the /api/register with the body of email, password and name
+// const { data, status, getCsrfToken, getProviders, signOut } = useAuth();
+// const providers = await getProviders();
+// const csrfToken = await getCsrfToken();
 
 definePageMeta({
     title: "Home",
