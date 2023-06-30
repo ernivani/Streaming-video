@@ -25,6 +25,7 @@ export default defineEventHandler(async (event: any) => {
             name,
             email,
             password: hashedPassword,
+            image: 'https://avatars.githubusercontent.com/u/25911230?v=4'
         },
     });
 

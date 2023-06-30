@@ -2,6 +2,7 @@
     <AppLayout class="mx-auto grid gap-4 grid-responsive">
         <!-- <ItemCard v-for="n in 10" /> -->
         <LoginForm />
+        <RegisterForm />
         <div>
             <pre v-if="data"><span>Data:</span> {{ data }}</pre>
             <pre v-if="status"><span>Status:</span> {{ status }}</pre>
