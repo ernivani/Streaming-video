@@ -9,14 +9,52 @@ datasource db {
 
 // video streaming youtube like
 
-model users {
-  id        String   @id @default(cuid()) @map("_id")
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  email     String   @unique
-  name      String?
-  password  String
-  videos    videos[]
+model Account {
+  id                String   @id @default(cuid()) @map("_id")
+  userId            String   @unique
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String
+  access_token      String
+  expires_at        DateTime
+  token_type        String
+  scope             String
+  session_state     String
+  is_subscribed     Boolean
+  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid()) @map("_id")
+  sessionToken String
+  UserId       String
+  expires      DateTime
+  user         User     @relation(fields: [UserId], references: [id], onDelete: Cascade)
+}
+
+model User {
+  id            String    @id @default(cuid()) @map("_id")
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  email         String    @unique
+  emailVerified DateTime?
+  name          String?
+  password      String
+  videos        videos[]
+  accounts      Account[]
+  sessions      Session[]
+}
+
+model VerificationToken {
+  id         String   @id @default(cuid()) @map("_id")
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
 }
 
 model videos {
@@ -27,6 +65,6 @@ model videos {
   views     Int      @default(0)
   url       String
   thumbnail String
-  user      users     @relation(fields: [userId], references: [id])
+  user      User     @relation(fields: [userId], references: [id])
   userId    String
 }

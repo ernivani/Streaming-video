@@ -8,13 +8,15 @@
             <form
                 class="space-y-8 pb-4"
                 spellcheck="false"
-                @submit.prevent="signIn(username, password)"
+                @submit.prevent="
+                    ($event) => signIn('credentials', { email, password })
+                "
             >
                 <TextInput
                     label="Email"
                     type="email"
                     placeholder="name@gmail.com"
-                    :text="username"
+                    :text="email"
                 />
                 <TextInput
                     label="Password"
@@ -44,11 +46,9 @@
 </template>
 <script setup lang="ts">
 import { ref } from "vue";
-import { definePageMeta, useAuth } from "#imports";
+const { signIn } = useAuth();
 
-const { signIn, token, data, status, lastRefreshedAt } = useAuth();
-
-const username = ref("");
+const email = ref("");
 const password = ref("");
 
 definePageMeta({
