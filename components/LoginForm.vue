@@ -60,5 +60,13 @@ const password = ref("");
                 </button>
             </div>
         </form>
+        <button class="cursor-pointer text-gray-700" @click="signIn('google')">
+            <img
+                src="https://developers.google.com/identity/images/g-logo.png"
+                alt="Google Logo"
+                class="w-6 h-6"
+            />
+            <span class="ml-2">Sign in with Google</span>
+        </button>
     </div>
 </template>
