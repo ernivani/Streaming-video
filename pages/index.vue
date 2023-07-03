@@ -1,8 +1,6 @@
 <template>
     <AppLayout class="mx-auto grid gap-4 grid-responsive">
-        <ItemCard v-for="n in 10" />
-        <!-- <LoginForm />
-        <RegisterForm />
+        <!-- <ItemCard v-for="n in 10" /> -->
         <div>
             <pre v-if="data"><span>Data:</span> {{ data }}</pre>
             <pre v-if="status"><span>Status:</span> {{ status }}</pre>
@@ -15,13 +13,13 @@
             >
                 <span>Logout</span>
             </button>
-        </div> -->
+        </div>
     </AppLayout>
 </template>
 <script setup lang="ts">
-// const { data, status, getCsrfToken, getProviders, signOut } = useAuth();
-// const providers = await getProviders();
-// const csrfToken = await getCsrfToken();
+const { data, status, getCsrfToken, getProviders, signOut } = useAuth();
+const providers = await getProviders();
+const csrfToken = await getCsrfToken();
 
 definePageMeta({
     title: "Home",

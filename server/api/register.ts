@@ -10,11 +10,30 @@ export default defineEventHandler(async (event: any) => {
 
     const body = await readBody(event);
 
-    const { name, email, password } = body;
+    const { name, email, password, passwordRepeat } = body;
 
-    if (!name || !email || !password) {
+    console.log(body);
+    if (!name || !email || !password || !passwordRepeat) {
         return {
             error: "Missing fields",
+        };
+    }
+
+    if (password !== passwordRepeat) {
+        return {
+            error: "Passwords don't match",
+        };
+    }
+
+    const userExists = await prismadb.user.findFirst({
+        where: {
+            email,
+        },
+    });
+
+    if (userExists) {
+        return {
+            error: "User already exists",
         };
     }
 
@@ -25,9 +44,15 @@ export default defineEventHandler(async (event: any) => {
             name,
             email,
             password: hashedPassword,
-            image: 'https://avatars.githubusercontent.com/u/25911230?v=4'
+            image: "https://avatars.githubusercontent.com/u/25911230?v=4",
         },
     });
+
+    if (!user) {
+        return {
+            error: "Failed to create user",
+        };
+    }
 
     return {
         user,

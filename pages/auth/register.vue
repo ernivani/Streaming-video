@@ -5,29 +5,7 @@
                 <h1 class="text-3xl">Hi, there</h1>
                 <p class="text-base">Signup to continue</p>
             </div>
-            <form class="space-y-8 pb-4" spellcheck="false">
-                <TextInput
-                    label="Full Name"
-                    type="name"
-                    :text="credentials.email"
-                />
-                <TextInput
-                    label="Email"
-                    type="email"
-                    :text="credentials.email"
-                />
-                <TextInput
-                    label="Password"
-                    type="password"
-                    v-model="credentials.password"
-                />
-                <TextInput
-                    label="Confirm Password"
-                    type="password"
-                    v-model="credentials.passwordRepeat"
-                />
-            </form>
-            <FilledButton type="submit" class="w-full h-12" text="Sign up" />
+            <RegisterForm />
             <OutlinedButton
                 type="submit"
                 class="w-full h-12"
@@ -39,6 +17,7 @@
                 <button
                     v-Ripple
                     class="cursor-pointer rounded-md text-colorPrimaryLight dark:text-colorPrimaryDark"
+                    @click="() => $router.push('/auth/login')"
                 >
                     Login
                 </button>
@@ -47,14 +26,11 @@
     </AppLayout>
 </template>
 <script setup lang="ts">
-const credentials = reactive({
-    firstName: "",
-    surname: "",
-    email: "",
-    password: "",
-    passwordRepeat: "",
-});
+
 definePageMeta({
     title: "Register",
 });
+
+
 </script>
+
